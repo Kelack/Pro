@@ -1,0 +1,20 @@
+$number = 5;
+
+if(37 > $number)
+{
+    for($i = 1000; $i < 10000; $i++)
+    {
+        $currentDate = $i; 
+        $sum = 0;
+
+        for($k = 0; $k < 4; $k++)
+        {
+            $sum += $currentDate % 10;
+            $currentDate = intdiv($currentDate, 10);
+        }
+
+        if($number == $sum)
+            echo $i.' ';
+
+    }
+}
