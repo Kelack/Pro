@@ -1,0 +1,19 @@
+<?php
+
+//число введенное для вычислений
+$number = 5;
+
+//Колличество цифр меньших 5 в "$number"
+$numberOfDigits = 0;
+
+
+while($number > 0)
+{
+    if(($number % 10) < 5)
+        $numberOfDigits ++;
+
+    $number = intdiv($number, 10);
+}
+
+echo $numberOfDigits;
+?>
