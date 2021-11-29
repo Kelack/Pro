@@ -1,0 +1,26 @@
+$number = 98765;
+
+$examination = true;
+
+while($number > 1)
+{
+    $lastNumber = 0;
+    $penultimateNumber = 0;
+
+    $lastNumber = $number % 10;
+
+    $number = intdiv($number, 10);
+
+    $penultimateNumber = $number % 10;
+
+    if($lastNumber >= $penultimateNumber and $penultimateNumber != 0)
+    {
+        $examination = false;
+        break;
+    }
+}
+
+if($examination)
+    echo "Образуют";
+else
+    echo "Не образуют";
