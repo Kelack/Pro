@@ -13,7 +13,7 @@ while($number > 1)
 
     $penultimateNumber = $number % 10;
 
-    if($lastNumber >= $penultimateNumber and $penultimateNumber != 0)
+    if(($lastNumber != $penultimateNumber-1) and $penultimateNumber != 0)
     {
         $examination = false;
         break;
