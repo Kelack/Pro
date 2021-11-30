@@ -1,0 +1,47 @@
+//7. Выяснить, есть ли в записи натурального числа N две одинаковые цифры.
+
+$numberPermanent = 123456789;
+$number = $numberPermanent;
+$number2 = $numberPermanent;
+
+
+if(exception($numberPermanent))
+    while ($number > 0)
+    {
+        $checkedNumber =  $number % 10;
+        $number2 = $numberPermanent;
+        $exam = 0;
+
+        while ($number2 > 0)
+        {
+            if($checkedNumber ==  $number2 % 10)
+                $exam++;
+            
+            $number2 = intdiv($number2, 10);
+            
+        }
+        
+        if($exam > 1)
+        {
+            echo "В числе $number есть две одинаковые цифы ";
+            break;
+        }
+
+        $number = intdiv($number, 10);
+    }
+
+
+function exception($number)
+{
+    if(intdiv($number, 10) < 1)
+    {
+        echo "В числе $number нет двух одинаковых цифр, советую написать число побольше";
+        return false;
+    }
+    if(intdiv($number, 10000000000) > 0)
+    {
+        echo "В числе $number 100% есть две одинаковые цифры, я даже считать не буду, напишите число поменьше";
+        return false;
+    }
+    return true;
+}
