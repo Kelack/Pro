@@ -1,0 +1,16 @@
+$number = 53300001;
+$answer = 0;
+
+
+
+while($number >= 1)
+{
+    if($number > 9)
+        $answer = ($answer + $number % 10) * 10;
+    else
+        $answer += $number;
+    
+    $number = intdiv($number, 10);
+}
+
+echo $answer;
