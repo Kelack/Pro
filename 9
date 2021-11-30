@@ -1,0 +1,22 @@
+//9. Дано  натуральное  число  N.  Определить,  является  ли  оно автоморфным. Автоморфное число  равно последним разрядам квадрата этого числа. Например,  5 и 25,  6 и 36,  25 и 625.
+
+$originalNumber = 36;
+$number = $originalNumber;
+$numberSquared = pow($number, 2);
+$exam = true;
+
+while($number > 0)
+{
+    if($number % 10 !== $numberSquared % 10)
+    {
+        $exam = false;
+        break;
+    }
+    $number = intdiv($number, 10);
+    $numberSquared = intdiv($numberSquared, 10);
+}
+
+if($exam)
+    echo "Число $originalNumber является автоморфным";
+else
+    echo "Число $originalNumber не является автоморфным";
