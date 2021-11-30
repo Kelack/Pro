@@ -1,0 +1,34 @@
+//8. Получить все четырехзначные целые числа, в записи которых нет одинаковых цифр.
+
+for($i = 1000; $i < 10000; $i++)
+{
+    $number = $i; 
+    $exam = true;
+
+    for($k = 0; $k < 3; $k++)
+    {
+        $currentNumber = $number % 10;
+        $checkedNumber = $i;
+        $coincidences = 0;
+
+        while ($checkedNumber > 0)
+        {
+            if($currentNumber ==  $checkedNumber % 10)
+                $coincidences++;
+        
+            $checkedNumber = intdiv($checkedNumber, 10);
+            
+        }
+        if($coincidences > 1)
+        {
+            $exam = false;
+            break;
+        }
+        $number = intdiv($number, 10);
+    }
+    
+    if($exam)
+        echo $i .' ';
+    
+
+}
