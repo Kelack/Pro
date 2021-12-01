@@ -1,1 +1,34 @@
 
+//10. Найти все меньшие N числа-палиндромы, которые при возведении в квадрат дают палиндром. 
+//Число называется палиндромом, если его запись читается одинаково с начала и с конца.
+
+$n = 500;
+
+for($i = 0; $i !== $n+1; $i++)
+{
+    if(palindromeComputation ($i))
+    {
+        $palindrome = $i;
+        
+        if(palindromeComputation(pow($palindrome,2)))
+            echo $i .' возведении в квадрат = ' .pow($palindrome,2) .'; ';
+    }
+}
+
+function palindromeComputation ($number)
+{
+    $checkedNumber = $number;
+    $currentNumber = $number;
+    $number_ViceVersa = 0;
+
+    while($checkedNumber > 0)
+    {
+        $number_ViceVersa = $number_ViceVersa * 10 + $checkedNumber % 10;
+        $checkedNumber = intdiv($checkedNumber, 10);
+    }
+
+    if($currentNumber == $number_ViceVersa)
+        return true;
+        
+    return false;
+}
