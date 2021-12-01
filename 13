@@ -1,0 +1,40 @@
+//13. Определить, является ли число  2n  m  симметричным, т. е. запись  числа содержит четное количество цифр и совпадают его левая и правая  половинки.  
+
+$number = 886688;
+
+if(digitsInNumber($number) % 2 == 1)
+    echo "Число $number не является симметричным";
+else if(!honestPalindromeComputation($number))
+    echo "Число $number не является симметричным";
+else
+    echo "Число $number является симметричным";
+
+function digitsInNumber($number)
+{
+    $account = 0;
+        
+    while($number > 0)
+    {
+        $account++;
+        $number = intdiv($number,10);
+    }
+    return $account;
+}
+
+function honestPalindromeComputation($number)
+{
+    $checkedNumber = $number;
+    $currentNumber = $number;
+    $number_ViceVersa = 0;
+
+    while($checkedNumber > 0)
+    {
+        $number_ViceVersa = $number_ViceVersa * 10 + $checkedNumber % 10;
+        $checkedNumber = intdiv($checkedNumber, 10);
+    }
+
+    if($currentNumber == $number_ViceVersa)
+        return true;
+        
+    return false;
+}
