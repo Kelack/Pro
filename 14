@@ -1,0 +1,38 @@
+//14. Парными  простыми числами называются два простых числа, разность  которых равна двум. Например,  3 и 5; 11 и 13. Найти 10  парных  простых чисел.  
+
+$counter = 0;
+
+$x1 = 52151;
+$x2 = 125251;
+
+$primeNumber1 = 0;
+$primeNumber2 = 0;
+
+for($n = $x1; $n !== $x2; $n++)
+{
+    $primeNumber1 = $primeNumber2;
+    $exam = true;
+    for($i = 2; $i !== $n; $i++)
+    {
+        if($n % $i == 0)
+        {   
+            $exam = false;
+            break;
+        }
+    }
+
+    if($exam)
+        $primeNumber2 = $n;
+
+    // echo " $primeNumber1 и $primeNumber2; ";
+
+    if($primeNumber2 - $primeNumber1 == 2)
+    {
+        echo " $primeNumber1 и $primeNumber2; ";
+        $counter++;
+    }
+
+    if($counter > 10)
+     break;
+
+}
