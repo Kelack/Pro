@@ -1,0 +1,55 @@
+//18. Два  натуральных  числа  называют  дружественными,  если  каждое  из них равно сумме всех делителей другого. 
+//Найти все пары дружественных чисел, лежащих в диапазоне от N до M.  
+
+set_time_limit(0);
+
+$n = 1;
+$m = 1000;
+
+for($i = $n; $i < $m; $i++)
+{
+    $secondNumber = 0;
+    
+    for($k = $i+1; $k < $m; $k++)
+    {
+        if($k % 2 !== $i % 2)
+        {
+            continue;
+        }
+
+        if(sumDivisors($k) == $i)
+        {
+            $secondNumber = $k;
+            break;
+        }
+        
+        
+    }
+    
+    if($secondNumber == 0)
+    {
+        continue;
+    }
+    
+    $firstNumber = $i;
+
+    if(sumDivisors($firstNumber) == $secondNumber)
+    {
+        echo $firstNumber .' дружественное числo c ' .$secondNumber .'; <br> ';
+    }
+}
+
+function sumDivisors($number)
+{
+    $sum = 0;
+
+    for($k = 1; $k !== $number; $k++)
+    {
+        if($number % $k == 0)
+        {
+            $sum += $k;
+        }
+    }
+
+    return $sum;   
+}
