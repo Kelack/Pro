@@ -1,8 +1,11 @@
 //18. Два  натуральных  числа  называют  дружественными,  если  каждое  из них равно сумме всех делителей другого. 
-//Найти все пары дружественных чисел, лежащих в диапазоне от N до M.  
+//Найти все пары дружественных чисел, лежащих в диапазоне от N до M. 
 
-$n = 1;
-$m = 1500;
+$n = 100;
+$m = 3000;
+
+$account2 = 0;
+$account3 = 0;
 
 for($i = $n; $i < $m; $i++)
 {
@@ -10,12 +13,13 @@ for($i = $n; $i < $m; $i++)
     
     for($k = $i+1; $k < $m; $k++)
     {
+        $account2++;
         if($k % 2 !== $i % 2)
         {
             continue;
         }
 
-        if(sumDivisors($k) == $i)
+        if(sumDivisors2($k, $account3) == $i)
         {
             $secondNumber = $k;
             break;
@@ -29,18 +33,21 @@ for($i = $n; $i < $m; $i++)
     
     $firstNumber = $i;
 
-    if(sumDivisors($firstNumber) == $secondNumber)
+    if(sumDivisors2($firstNumber, $account3) == $secondNumber)
     {
-        echo $firstNumber .' дружественное числo c ' .$secondNumber .'; <br> ';
+        // echo $firstNumber .' дружественное числo c ' .$secondNumber .'; <br> ';
+        echo $firstNumber .' дружественное числo c ' .$secondNumber .", account2 = " .$account2 .", account3 = " .$account3 .'; <br> ';
     }
 }
 
-function sumDivisors($number)
+
+function sumDivisors($number, &$account3)
 {
     $sum = 0;
 
     for($k = 1; $k !== $number; $k++)
     {
+        $account3++;
         if($number % $k == 0)
         {
             $sum += $k;
@@ -48,4 +55,29 @@ function sumDivisors($number)
     }
 
     return $sum;   
+}
+
+function sumDivisors2($number, &$account3)
+{
+    $sum = 0;
+    $previousDivisor = 0;
+
+    for($k = 2; $k !== $number; $k++)
+    {
+        $account3++;
+        if($number % $k == 0)
+        {
+            if($previousDivisor*$k == $number)
+            {
+                break;
+            }
+
+            $sum += $number / $k;
+            $sum += $k;
+            $previousDivisor = $k;
+        }
+        
+    }
+
+    return $sum+1;   
 }
